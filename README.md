@@ -1,4 +1,4 @@
-# 🕵️ FraudGraph-AI
+#  FraudGraph-AI
 
 ### Graph-Based Financial Fraud Detection using Graph Neural Networks
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -24,7 +24,7 @@
 └──────────┴──────────┴──────────┴──────────┴─────────────────┘
 ```
 
-## 📊 Dataset
+##  Dataset
 
 | Property | Value |
 |----------|-------|
@@ -36,7 +36,7 @@
 | **Illicit** | ~2% (severe imbalance) |
 | **Timesteps** | 49 temporal snapshots |
 
-## 📈 Results
+##  Results
 
 | Model | ROC-AUC | PR-AUC | Precision | Recall | F1 |
 |-------|---------|--------|-----------|--------|-----|
@@ -44,11 +44,11 @@
 | Random Forest | ~0.92 | ~0.55 | ~0.50 | ~0.75 | ~0.60 |
 | XGBoost | ~0.94 | ~0.62 | ~0.55 | ~0.78 | ~0.64 |
 | **GCN** | ~0.96 | ~0.72 | ~0.65 | ~0.82 | ~0.72 |
-| **GAT** ⭐ | ~0.97 | ~0.78 | ~0.70 | ~0.85 | ~0.77 |
+| **GAT**  | ~0.97 | ~0.78 | ~0.70 | ~0.85 | ~0.77 |
 
 > *Results are approximate and depend on training run. GNNs consistently outperform feature-only baselines, validating that graph structure contains fraud signals.*
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Clone & Setup
 ```bash
@@ -92,7 +92,7 @@ docker build -t fraudgraph-ai .
 docker run -p 8000:8000 fraudgraph-ai
 ```
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 FraudGraph-AI/
@@ -135,7 +135,7 @@ FraudGraph-AI/
 └── README.md
 ```
 
-## 🔌 API Usage
+##  API Usage
 
 ### Predict Fraud
 ```bash
@@ -160,14 +160,14 @@ curl -X POST http://localhost:8000/predict \
 curl http://localhost:8000/health
 ```
 
-## 🔬 Key Technical Decisions
+##  Key Technical Decisions
 
 1. **Temporal Split** — Train on timesteps 1-34, validate 35-42, test 43-49. Prevents data leakage from future transactions.
 2. **Weighted BCE Loss** — pos_weight ≈ 40x to handle 2% fraud rate.
 3. **PR-AUC as Primary Metric** — More informative than ROC-AUC for imbalanced datasets.
 4. **GAT Multi-Head Attention** — Learns which neighbor transactions are most suspicious, unlike GCN's uniform aggregation.
 
-## 🔮 Future Improvements
+##  Future Improvements
 
 - [ ] Heterogeneous graph (separate wallet and transaction nodes)
 - [ ] Temporal GNN (EvolveGCN, TGAT) for dynamic graphs
@@ -177,14 +177,10 @@ curl http://localhost:8000/health
 - [ ] Kubernetes deployment with auto-scaling
 - [ ] A/B testing framework for model rollouts
 
-## 📜 License
+##  License
 
 MIT License — see [LICENSE](LICENSE) for details.
 
-## 👤 Author
+##  Author
 
-**Jainil** — Data Scientist & ML Engineer
-
----
-
-*Built as a production-grade portfolio project demonstrating graph-based fraud detection with GNNs.*
+**Jainil** 
