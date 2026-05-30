@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+.venv/
+venv/
+data/
+mlruns/
+notebooks/
+outputs/
+.git/
+.gitignore
+*.md
+*.ipynb
