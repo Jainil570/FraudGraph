@@ -10,7 +10,8 @@
 
 ---
 
-<video src="https://drive.google.com/file/d/1VqzfuICNZasWbgUGspsmTtCQ25-jYJXT/view?usp=sharing" autoplay muted loop playsinline width="100%"></video>
+<video src="https://google.com" autoplay muted loop playsinline width="100%"></video>
+
 
 ---
 
