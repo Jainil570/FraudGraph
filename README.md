@@ -5,14 +5,15 @@
 > A production-grade fraud detection system that models Bitcoin transactions as a graph and detects illicit activity using **Graph Convolutional Networks (GCN)** and **Graph Attention Networks (GAT)** on the Elliptic Bitcoin Dataset.
 
 ---
+## Demo
 
-<img width="1919" height="984" alt="image" src="https://github.com/user-attachments/assets/6f25444e-afa3-45c1-85c5-fd5cff86ec3f" />
+<a href="https://drive.google.com/file/d/1VqzfuICNZasWbgUGspsmTtCQ25-jYJXT/view?usp=sharing">
+  <img src="https://github.com/user-attachments/assets/6f25444e-afa3-45c1-85c5-fd5cff86ec3f" width="100%">
+</a>
 
----
-
-[![Demo Video](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://drive.google.com/file/d/1VqzfuICNZasWbgUGspsmTtCQ25-jYJXT/view)
-
-
+<p align="center">
+  Click the image to watch the full demo
+</p>
 ---
 
 ##  Architecture
