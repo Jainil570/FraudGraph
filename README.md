@@ -6,6 +6,14 @@
 
 ---
 
+<img width="1919" height="984" alt="image" src="https://github.com/user-attachments/assets/6f25444e-afa3-45c1-85c5-fd5cff86ec3f" />
+
+---
+
+<video src="https://drive.google.com/file/d/1VqzfuICNZasWbgUGspsmTtCQ25-jYJXT/view?usp=sharing" autoplay muted loop playsinline width="100%"></video>
+
+---
+
 ##  Architecture
 
 ```
