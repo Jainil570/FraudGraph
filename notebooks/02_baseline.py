@@ -1,5 +1,5 @@
-# %% [markdown]
-# # 🏋️ FraudGraph-AI — Step 5: Baseline Models
+﻿# %% [markdown]
+# # 🏋️ FraudGraph-AI -- Step 5: Baseline Models
 #
 # **Why baselines?** Before investing in complex GNN architectures, we must
 # establish how well simple feature-based models perform. If XGBoost matches
@@ -7,9 +7,9 @@
 # complexity.
 #
 # We train three models, each progressively more powerful:
-# 1. **Logistic Regression** — Linear boundary. Can fraud be separated linearly?
-# 2. **Random Forest** — Non-linear ensemble. Captures feature interactions.
-# 3. **XGBoost** — Gradient boosting. State-of-the-art for tabular data.
+# 1. **Logistic Regression** -- Linear boundary. Can fraud be separated linearly?
+# 2. **Random Forest** -- Non-linear ensemble. Captures feature interactions.
+# 3. **XGBoost** -- Gradient boosting. State-of-the-art for tabular data.
 #
 # All use **class_weight='balanced'** to handle the 2% fraud imbalance.
 # All use the **same temporal split** as GNNs for fair comparison.
@@ -80,12 +80,12 @@ plt.show()
 # %% [markdown]
 # ## Baseline Takeaways
 #
-# 1. XGBoost is the strongest baseline — but its PR-AUC is still limited
+# 1. XGBoost is the strongest baseline -- but its PR-AUC is still limited
 # 2. All baselines treat each transaction INDEPENDENTLY
 # 3. They cannot capture: "this node's neighbors are mostly fraudulent"
 # 4. GNNs should improve on these results by leveraging graph structure
 #
-# **Next:** `03_gcn_gat.py` — Build and train Graph Neural Networks
+# **Next:** `03_gcn_gat.py` -- Build and train Graph Neural Networks
 
 # %%
-print("\n✅ Baselines complete. Proceed to 03_gcn_gat.py for GNN models.")
+print("\n Baselines complete. Proceed to 03_gcn_gat.py for GNN models.")

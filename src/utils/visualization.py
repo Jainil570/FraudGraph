@@ -1,6 +1,6 @@
-"""
+﻿"""
 =============================================================================
-FraudGraph-AI — Visualization Utilities
+FraudGraph-AI -- Visualization Utilities
 =============================================================================
 All plotting helpers for EDA, training curves, and evaluation reports.
 Saves figures to outputs/ directory automatically.
@@ -27,11 +27,11 @@ plt.rcParams.update({
 def _save(fig, name):
     path = os.path.join(OUTPUTS_DIR, f"{name}.png")
     fig.savefig(path, dpi=150, bbox_inches='tight')
-    print(f"[PLOT] Saved → {path}")
+    print(f"[PLOT] Saved -> {path}")
     plt.close(fig)
 
 
-# ── EDA Plots ──────────────────────────────────────────────────────────
+# -- EDA Plots ----------------------------------------------------------
 
 def plot_class_distribution(labels, known_mask, save=True):
     """Bar chart of fraud vs legit among labeled nodes."""
@@ -127,7 +127,7 @@ def plot_feature_correlation(features_np, top_n=20, save=True):
     return fig
 
 
-# ── Training Plots ─────────────────────────────────────────────────────
+# -- Training Plots -----------------------------------------------------
 
 def plot_training_history(history, model_name="Model", save=True):
     """Loss and metric curves over epochs."""
@@ -135,21 +135,21 @@ def plot_training_history(history, model_name="Model", save=True):
 
     axes[0].plot(history['train_loss'], label='Train', linewidth=2)
     axes[0].plot(history['val_loss'], label='Val', linewidth=2)
-    axes[0].set_title(f'{model_name} — Loss')
+    axes[0].set_title(f'{model_name} -- Loss')
     axes[0].set_xlabel('Epoch')
     axes[0].legend()
 
     if 'val_roc_auc' in history:
         axes[1].plot(history['val_roc_auc'], label='ROC-AUC',
                      color='#2ecc71', linewidth=2)
-        axes[1].set_title(f'{model_name} — ROC-AUC')
+        axes[1].set_title(f'{model_name} -- ROC-AUC')
         axes[1].set_xlabel('Epoch')
         axes[1].legend()
 
     if 'val_pr_auc' in history:
         axes[2].plot(history['val_pr_auc'], label='PR-AUC',
                      color='#e74c3c', linewidth=2)
-        axes[2].set_title(f'{model_name} — PR-AUC')
+        axes[2].set_title(f'{model_name} -- PR-AUC')
         axes[2].set_xlabel('Epoch')
         axes[2].legend()
 
@@ -160,7 +160,7 @@ def plot_training_history(history, model_name="Model", save=True):
     return fig
 
 
-# ── Evaluation Plots ───────────────────────────────────────────────────
+# -- Evaluation Plots ---------------------------------------------------
 
 def plot_roc_curves(results_dict, save=True):
     """Overlay ROC curves for multiple models."""
@@ -203,7 +203,7 @@ def plot_confusion_matrix(cm, model_name="Model", save=True):
                 yticklabels=['Legit', 'Fraud'])
     ax.set_xlabel('Predicted')
     ax.set_ylabel('Actual')
-    ax.set_title(f'{model_name} — Confusion Matrix')
+    ax.set_title(f'{model_name} -- Confusion Matrix')
     if save:
         _save(fig, f'confusion_matrix_{model_name.lower().replace(" ", "_")}')
     return fig
@@ -222,7 +222,7 @@ def plot_feature_importance(importances, feature_names=None, top_n=20,
     ax.set_yticks(range(top_n))
     ax.set_yticklabels([feature_names[i] for i in idx][::-1])
     ax.set_xlabel('Importance')
-    ax.set_title(f'{model_name} — Top {top_n} Feature Importances')
+    ax.set_title(f'{model_name} -- Top {top_n} Feature Importances')
     fig.tight_layout()
     if save:
         _save(fig, f'feature_importance_{model_name.lower().replace(" ", "_")}')

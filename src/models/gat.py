@@ -1,16 +1,16 @@
-"""
+﻿"""
 =============================================================================
-FraudGraph-AI — Graph Attention Network (GAT)
+FraudGraph-AI -- Graph Attention Network (GAT)
 =============================================================================
 
-MENTOR NOTE — GCN vs GAT:
+MENTOR NOTE -- GCN vs GAT:
 
 GCN treats ALL neighbors equally (weighted only by degree).
-GAT learns ATTENTION WEIGHTS — "which neighbors matter more?"
+GAT learns ATTENTION WEIGHTS -- "which neighbors matter more?"
 
 This is critical for fraud detection because:
 • A legitimate exchange node may have 1,000 connections, 999 licit + 1 illicit.
-  GCN averages them all → the fraud signal is diluted.
+  GCN averages them all -> the fraud signal is diluted.
 • GAT can learn to ATTEND to the suspicious connection and ignore the rest.
 
 The attention mechanism:
@@ -23,9 +23,9 @@ This gives the model K different "perspectives" on neighborhood importance.
 
 ARCHITECTURE:
     Input (165 features)
-    → GATConv(165 → 32, heads=4)  → ELU → Dropout(0.3)  [output: 128]
-    → GATConv(128 → 64, heads=2, concat=False) → ELU → Dropout(0.3) [output: 64]
-    → Linear(64 → 1)
+    -> GATConv(165 -> 32, heads=4)  -> ELU -> Dropout(0.3)  [output: 128]
+    -> GATConv(128 -> 64, heads=2, concat=False) -> ELU -> Dropout(0.3) [output: 64]
+    -> Linear(64 -> 1)
 =============================================================================
 """
 

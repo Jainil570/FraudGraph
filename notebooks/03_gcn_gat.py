@@ -1,5 +1,5 @@
-# %% [markdown]
-# # 🧠 FraudGraph-AI — Steps 6-12: GNN Training & Evaluation
+﻿# %% [markdown]
+# # 🧠 FraudGraph-AI -- Steps 6-12: GNN Training & Evaluation
 #
 # This notebook covers the core of the project:
 # - **Step 6:** Graph Construction & Theory
@@ -12,14 +12,14 @@
 #
 # ---
 #
-# ## Step 6 — Graph Construction Theory
+# ## Step 6 -- Graph Construction Theory
 #
 # ### What is a Graph in this context?
 #
 # ```
-# Transaction A ──→ Transaction B ──→ Transaction C
-#       │                                    │
-#       └──→ Transaction D ──→ Transaction E ┘
+# Transaction A ---> Transaction B ---> Transaction C
+#       |                                    |
+#       └---> Transaction D ---> Transaction E ┘
 # ```
 #
 # Each **node** = one Bitcoin transaction (203,769 total)
@@ -49,7 +49,7 @@
 #
 # Unlike typical ML where train/test are separate datasets, here ALL nodes
 # exist in ONE graph. The model sees the test node features and edges
-# during training — it just doesn't see their LABELS. This is transductive
+# during training -- it just doesn't see their LABELS. This is transductive
 # learning, and it's natural for fraud detection where new transactions
 # connect to existing ones.
 
@@ -94,7 +94,7 @@ print(f"Feature shape: {data.x.shape}")
 print(f"Edge shape:    {data.edge_index.shape}")
 
 # %% [markdown]
-# ## Step 7 — Build & Train GCN
+# ## Step 7 -- Build & Train GCN
 #
 # ### How GCN Works
 #
@@ -145,9 +145,9 @@ fig = plot_training_history(gcn_history, "GCN")
 plt.show()
 
 # %% [markdown]
-# ## Step 8 — Build & Train GAT
+# ## Step 8 -- Build & Train GAT
 #
-# ### GCN vs GAT — The Key Difference
+# ### GCN vs GAT -- The Key Difference
 #
 # | Aspect | GCN | GAT |
 # |--------|-----|-----|
@@ -168,7 +168,7 @@ plt.show()
 # attention weight 0.8 to the fraud neighbor and 0.002 to each legit one.
 #
 # **Multi-head attention** runs K independent attention mechanisms and
-# concatenates results → K different "perspectives" on importance.
+# concatenates results -> K different "perspectives" on importance.
 
 # %%
 gat_model = GATFraudDetector(
@@ -201,7 +201,7 @@ fig = plot_training_history(gat_history, "GAT")
 plt.show()
 
 # %% [markdown]
-# ## Step 10 — Evaluation & Comparison
+# ## Step 10 -- Evaluation & Comparison
 
 # %%
 print("\n" + "="*60)
@@ -216,7 +216,7 @@ metrics_dict = {k: v['metrics'] for k, v in all_results.items()}
 print("\n" + format_comparison_table(metrics_dict))
 
 # %% [markdown]
-# ## Step 11 — Explainable AI
+# ## Step 11 -- Explainable AI
 #
 # ### Why Explainability Matters in Fintech
 #
@@ -227,7 +227,7 @@ print("\n" + format_comparison_table(metrics_dict))
 # We need to answer: **"WHY does the model think this is fraud?"**
 
 # %%
-# GAT Attention Weights — which neighbors influenced each prediction?
+# GAT Attention Weights -- which neighbors influenced each prediction?
 print("\n[EXPLAIN] Visualising GAT attention weights...")
 attn_results = visualize_attention_weights(
     gat_model, data, test_mask, labels, top_n=5
@@ -237,7 +237,7 @@ for r in attn_results[:3]:
     print(f"\n  Node {r['node_id']}: P(fraud)={r['predicted_prob']:.3f}, "
           f"actual={'FRAUD' if r['actual_label'] else 'LEGIT'}")
     for nid, attn in sorted(r['top_neighbors'], key=lambda x: -x[1])[:5]:
-        print(f"    → Neighbor {nid}: attention={attn:.4f}")
+        print(f"    -> Neighbor {nid}: attention={attn:.4f}")
 
 # %%
 # SHAP on GNN embeddings (surrogate approach)
@@ -251,7 +251,7 @@ except Exception as e:
     print(f"[WARN] SHAP failed (may need more samples): {e}")
 
 # %% [markdown]
-# ## Step 12 — MLflow Experiment Tracking
+# ## Step 12 -- MLflow Experiment Tracking
 
 # %%
 setup_experiment("FraudGraph-AI")
@@ -281,8 +281,8 @@ print("\n[MLflow] All runs logged. View dashboard with: mlflow ui")
 #
 # | What We Did | Why |
 # |-------------|-----|
-# | GCN (2-layer) | Baseline GNN — uniform neighbor aggregation |
-# | GAT (multi-head) | Learned attention — better for fraud rings |
+# | GCN (2-layer) | Baseline GNN -- uniform neighbor aggregation |
+# | GAT (multi-head) | Learned attention -- better for fraud rings |
 # | Weighted BCE | Handle 2% imbalance without oversampling |
 # | Temporal split | Prevent data leakage from future transactions |
 # | Early stopping on PR-AUC | Optimise for fraud ranking, not loss |

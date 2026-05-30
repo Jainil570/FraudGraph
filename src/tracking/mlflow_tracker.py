@@ -1,6 +1,6 @@
-"""
+﻿"""
 =============================================================================
-FraudGraph-AI — MLflow Experiment Tracking
+FraudGraph-AI -- MLflow Experiment Tracking
 =============================================================================
 
 MENTOR NOTE:
@@ -13,7 +13,7 @@ This lets you compare runs: "Did 4-head GAT beat 2-head GAT?"
 Without tracking, you lose this information forever.
 
 We use a LOCAL file-based backend (mlruns/ directory).
-No server needed — just run `mlflow ui` to see the dashboard.
+No server needed -- just run `mlflow ui` to see the dashboard.
 =============================================================================
 """
 

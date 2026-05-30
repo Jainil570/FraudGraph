@@ -1,9 +1,9 @@
-"""
+﻿"""
 =============================================================================
-FraudGraph-AI — Graph Convolutional Network (GCN)
+FraudGraph-AI -- Graph Convolutional Network (GCN)
 =============================================================================
 
-MENTOR NOTE — How GCN Works:
+MENTOR NOTE -- How GCN Works:
 
 A GCN layer performs NEIGHBORHOOD AGGREGATION. For each node v:
 
@@ -24,9 +24,9 @@ WHY THIS WORKS FOR FRAUD:
 
 ARCHITECTURE:
     Input (165 features)
-    → GCNConv(165 → 128) → BatchNorm → ReLU → Dropout(0.3)
-    → GCNConv(128 → 64)  → BatchNorm → ReLU → Dropout(0.3)
-    → Linear(64 → 1)     [Binary classification logit]
+    -> GCNConv(165 -> 128) -> BatchNorm -> ReLU -> Dropout(0.3)
+    -> GCNConv(128 -> 64)  -> BatchNorm -> ReLU -> Dropout(0.3)
+    -> Linear(64 -> 1)     [Binary classification logit]
 =============================================================================
 """
 
@@ -53,7 +53,7 @@ class GCNFraudDetector(nn.Module):
         self.bn1 = BatchNorm(hidden_channels)
         self.bn2 = BatchNorm(out_channels)
 
-        # Classification head — single logit for BCEWithLogitsLoss
+        # Classification head -- single logit for BCEWithLogitsLoss
         self.classifier = nn.Linear(out_channels, 1)
 
         self.dropout = dropout
@@ -67,9 +67,9 @@ class GCNFraudDetector(nn.Module):
             edge_index: Edge list      [2, E]
 
         Returns:
-            logits: Raw logits [N, 1] — apply sigmoid for probabilities
+            logits: Raw logits [N, 1] -- apply sigmoid for probabilities
         """
-        # Layer 1: aggregate → normalise → activate → drop
+        # Layer 1: aggregate -> normalise -> activate -> drop
         h = self.conv1(x, edge_index)
         h = self.bn1(h)
         h = F.relu(h)

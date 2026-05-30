@@ -1,9 +1,9 @@
-"""
+﻿"""
 =============================================================================
-FraudGraph-AI — GNN Training Pipeline
+FraudGraph-AI -- GNN Training Pipeline
 =============================================================================
 
-MENTOR NOTE — Training Strategy:
+MENTOR NOTE -- Training Strategy:
 
 1. WEIGHTED BCE LOSS: BCEWithLogitsLoss with pos_weight ≈ 40.
    This tells the optimizer: "missing one fraud costs as much as
@@ -21,7 +21,7 @@ MENTOR NOTE — Training Strategy:
    fraud correctly, not minimising cross-entropy.
 
 5. MODEL CHECKPOINTING: Save the model with the best val PR-AUC.
-   Training may overfit after the optimal point — we keep the best.
+   Training may overfit after the optimal point -- we keep the best.
 =============================================================================
 """
 
@@ -82,7 +82,7 @@ def train_gnn(model, data, binary_labels, train_mask, val_mask,
     print(f"{'='*60}\n")
 
     for epoch in range(1, epochs + 1):
-        # ── Train ──────────────────────────────────────────────
+        # -- Train ----------------------------------------------
         model.train()
         optimizer.zero_grad()
 
@@ -93,7 +93,7 @@ def train_gnn(model, data, binary_labels, train_mask, val_mask,
 
         train_loss = loss.item()
 
-        # ── Validate ───────────────────────────────────────────
+        # -- Validate -------------------------------------------
         model.eval()
         with torch.no_grad():
             logits = model(data.x, data.edge_index)
@@ -126,16 +126,16 @@ def train_gnn(model, data, binary_labels, train_mask, val_mask,
             best_val_pr_auc = val_pr_auc
             best_model_state = copy.deepcopy(model.state_dict())
             patience_counter = 0
-            marker = " ★ best"
+            marker = " * best"
         else:
             patience_counter += 1
             marker = ""
 
         if epoch % 5 == 0 or epoch == 1 or marker:
-            print(f"  Epoch {epoch:3d}/{epochs} │ "
-                  f"Loss: {train_loss:.4f}/{val_loss:.4f} │ "
-                  f"ROC: {val_roc_auc:.4f} │ "
-                  f"PR: {val_pr_auc:.4f} │ "
+            print(f"  Epoch {epoch:3d}/{epochs} | "
+                  f"Loss: {train_loss:.4f}/{val_loss:.4f} | "
+                  f"ROC: {val_roc_auc:.4f} | "
+                  f"PR: {val_pr_auc:.4f} | "
                   f"LR: {current_lr:.6f}{marker}")
 
         if patience_counter >= patience:
@@ -156,7 +156,7 @@ def train_gnn(model, data, binary_labels, train_mask, val_mask,
         'best_val_pr_auc': best_val_pr_auc,
         'history': history,
     }, save_path)
-    print(f"\n  [SAVE] Best model → {save_path}")
+    print(f"\n  [SAVE] Best model -> {save_path}")
     print(f"  [BEST] Val PR-AUC = {best_val_pr_auc:.4f}")
 
     return model, history

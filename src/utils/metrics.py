@@ -1,15 +1,15 @@
-"""
+﻿"""
 =============================================================================
-FraudGraph-AI — Evaluation Metrics
+FraudGraph-AI -- Evaluation Metrics
 =============================================================================
 
-MENTOR NOTE — Why These Metrics Matter for Fraud Detection:
+MENTOR NOTE -- Why These Metrics Matter for Fraud Detection:
 
 • ACCURACY is misleading with 2% fraud. A "predict all legit" model = 98%.
 • PRECISION = of flagged transactions, how many are real fraud?
-  Low precision → analysts waste time on false alarms.
+  Low precision -> analysts waste time on false alarms.
 • RECALL = of all actual fraud, how many did we catch?
-  Low recall → fraud slips through, financial loss.
+  Low recall -> fraud slips through, financial loss.
 • PR-AUC (Precision-Recall AUC) is THE key metric for imbalanced binary
   classification. Unlike ROC-AUC, it doesn't get inflated by true negatives.
 • PRECISION@K = of top K riskiest transactions, how many are fraud?
@@ -97,7 +97,7 @@ def get_curves(y_true, y_prob):
 def print_metrics_report(metrics, model_name="Model"):
     """Pretty-print a metrics summary."""
     print(f"\n{'='*55}")
-    print(f"  {model_name} — Evaluation Report")
+    print(f"  {model_name} -- Evaluation Report")
     print(f"{'='*55}")
     for key in ['accuracy', 'precision', 'recall', 'f1', 'roc_auc', 'pr_auc']:
         if key in metrics:

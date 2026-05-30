@@ -1,6 +1,6 @@
-"""
+﻿"""
 =============================================================================
-FraudGraph-AI — Model Evaluator
+FraudGraph-AI -- Model Evaluator
 =============================================================================
 Loads all trained models, runs predictions on the test set, computes
 metrics, and generates comparison reports & plots.
@@ -75,13 +75,13 @@ def run_full_evaluation(data, binary_labels, test_mask,
     """
     all_results = {}
 
-    # ── Baselines ──────────────────────────────────────────────
+    # -- Baselines ----------------------------------------------
     if baseline_results is not None:
         for name, res in baseline_results.items():
             all_results[name] = res
-            print(f"[EVAL] {name} — from baseline cache")
+            print(f"[EVAL] {name} -- from baseline cache")
 
-    # ── GCN ────────────────────────────────────────────────────
+    # -- GCN ----------------------------------------------------
     gcn_model = load_gnn_model(
         GCNFraudDetector,
         {
@@ -97,7 +97,7 @@ def run_full_evaluation(data, binary_labels, test_mask,
             gcn_model, data, binary_labels, test_mask, "GCN"
         )
 
-    # ── GAT ────────────────────────────────────────────────────
+    # -- GAT ----------------------------------------------------
     gat_model = load_gnn_model(
         GATFraudDetector,
         {
@@ -114,7 +114,7 @@ def run_full_evaluation(data, binary_labels, test_mask,
             gat_model, data, binary_labels, test_mask, "GAT"
         )
 
-    # ── Comparison ─────────────────────────────────────────────
+    # -- Comparison ---------------------------------------------
     if all_results:
         metrics_dict = {k: v['metrics'] for k, v in all_results.items()}
         table = format_comparison_table(metrics_dict)
